@@ -25,4 +25,17 @@ export const achievementsData: Achievement[] = [
     year: "2025",
     icon: "🥈",
   },
+  {
+    id: "leetcode",
+    title: "135+ LeetCode problems solved",
+    year: "Present",
+    icon: "💻",
+  },
+  {
+    id: "cgpa",
+    title: "CGPA 3.96 / 4.00",
+    description: "BSc in Computer Science and Engineering",
+    year: "Expected Dec 2026",
+    icon: "🎓",
+  },
 ];
