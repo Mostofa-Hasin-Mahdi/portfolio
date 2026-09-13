@@ -1,8 +1,8 @@
-import Image from "next/image";
 import Link from "next/link";
-import { ArrowRight, Github, ExternalLink } from "lucide-react";
+import { ArrowRight, ExternalLink } from "lucide-react";
 import { Project } from "@/lib/types";
 import { GithubIcon } from "@/components/ui/Icons";
+import { ImageCarousel } from "@/components/ui/ImageCarousel";
 
 interface ProjectCardProps {
   project: Project;
@@ -13,12 +13,11 @@ export function ProjectCard({ project }: ProjectCardProps) {
     <div className="group flex flex-col bg-surface border border-border rounded-2xl overflow-hidden hover:border-accent transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_8px_30px_rgb(0,0,0,0.12)] hover:shadow-accent/10">
       {/* Thumbnail */}
       <div className="relative h-64 w-full bg-border/50 overflow-hidden">
-        {project.imageUrl ? (
-          <Image
-            src={project.imageUrl}
+        {project.imageUrls && project.imageUrls.length > 0 ? (
+          <ImageCarousel
+            images={project.imageUrls}
             alt={project.title}
-            fill
-            className="object-cover group-hover:scale-105 transition-transform duration-500"
+            className="w-full h-full group-hover:scale-105 transition-transform duration-500"
           />
         ) : (
           <div className="absolute inset-0 flex items-center justify-center text-muted">

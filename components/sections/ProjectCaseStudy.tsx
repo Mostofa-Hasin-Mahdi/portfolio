@@ -1,11 +1,11 @@
 "use client";
 
-import Image from "next/image";
 import Link from "next/link";
 import { ArrowLeft, ExternalLink } from "lucide-react";
 import { motion } from "framer-motion";
 import { Project } from "@/lib/types";
 import { GithubIcon } from "@/components/ui/Icons";
+import { ImageCarousel } from "@/components/ui/ImageCarousel";
 
 interface ProjectCaseStudyProps {
   project: Project;
@@ -78,20 +78,19 @@ export function ProjectCaseStudy({ project, nextProject }: ProjectCaseStudyProps
       </section>
 
       <div className="max-w-4xl mx-auto px-6 mt-16 space-y-20">
-        {/* Main Image */}
-        {project.imageUrl && (
+        {/* Main Image Carousel */}
+        {project.imageUrls && project.imageUrls.length > 0 && (
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.2 }}
-            className="relative w-full aspect-video rounded-2xl overflow-hidden border border-border bg-surface"
+            className="relative w-full aspect-video rounded-2xl overflow-hidden border border-border bg-surface shadow-lg"
           >
-            <Image
-              src={project.imageUrl}
-              alt={`${project.title} overview`}
-              fill
-              className="object-cover"
-              priority
+            <ImageCarousel
+              images={project.imageUrls}
+              alt={`${project.title} screenshot`}
+              className="w-full h-full"
+              interval={4000}
             />
           </motion.div>
         )}
