@@ -17,4 +17,10 @@ export interface Project {
   imageUrl: string;
   features: string[];
   challengesAndLessons: string;
+  
+  // Case Study specific fields
+  problem: string;
+  solution: string;
+  architectureDiagram?: string;
+  screenshots?: string[];
 }

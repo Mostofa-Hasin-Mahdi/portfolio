@@ -46,7 +46,7 @@ export function Footer() {
         </div>
 
         <div className="text-sm text-muted text-center md:text-right">
-          &copy; {currentYear} Mostofa Hasan Mahdi. <br className="hidden md:block" /> All rights reserved.
+          &copy; {currentYear} Mostofa Hasin Mahdi. <br className="hidden md:block" /> All rights reserved.
         </div>
       </div>
     </footer>

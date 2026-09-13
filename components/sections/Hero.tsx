@@ -44,7 +44,7 @@ export function Hero() {
             variants={itemVariants}
             className="text-4xl md:text-6xl font-bold tracking-tight text-text mb-4"
           >
-            Mostofa Hasan Mahdi
+            Mostofa Hasin Mahdi
           </motion.h1>
 
           <motion.h2 
@@ -120,7 +120,7 @@ export function Hero() {
           <div className="relative w-72 h-80 rounded-3xl overflow-hidden border border-border bg-surface">
             <Image
               src="/assets/PXL_20260816_09094153.jpg"
-              alt="Mostofa Hasan Mahdi"
+              alt="Mostofa Hasin Mahdi"
               fill
               priority
               className="object-cover"

@@ -16,8 +16,8 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Mostofa Hasan Mahdi | Software Engineer",
-  description: "Portfolio of Mostofa Hasan Mahdi, AI & Full Stack Software Engineer.",
+  title: "Mostofa Hasin Mahdi | Software Engineer",
+  description: "Portfolio of Mostofa Hasin Mahdi, AI & Full Stack Software Engineer.",
 };
 
 export default function RootLayout({

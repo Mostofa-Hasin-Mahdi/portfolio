@@ -9,7 +9,7 @@ export const projects: Project[] = [
       "A comprehensive clinical prediction tool designed to improve maternal health outcomes.",
       "Integrates an OCR pipeline to digitize physical health records instantly."
     ],
-    stack: ["Next.js", "Python", "XGBoost", "Tailwind CSS"],
+    stack: ["Mistral AI", "Python", "XGBoost", "MultiOutputClassifier"],
     metrics: [
       { label: "Inference Time", value: "<50ms" },
       { label: "Accuracy", value: "94%" }
@@ -23,7 +23,9 @@ export const projects: Project[] = [
       "XGBoost powered clinical predictions",
       "Secure HIPAA compliant data handling"
     ],
-    challengesAndLessons: "Balancing the OCR accuracy with speed required significant tuning of the image preprocessing pipeline before feeding into the text extraction model."
+    challengesAndLessons: "Balancing the OCR accuracy with speed required significant tuning of the image preprocessing pipeline before feeding into the text extraction model.",
+    problem: "Manual entry of clinical pregnancy data is slow, error-prone, and delays critical predictive care for expecting mothers.",
+    solution: "Developed an automated pipeline that uses OCR to digitize physical forms and feeds the structured data into an XGBoost model for real-time risk prediction."
   },
   {
     id: "pdf-to-markdown",
@@ -33,7 +35,7 @@ export const projects: Project[] = [
       "An engine that accurately parses PDF documents, understanding complex layouts like columns and tables.",
       "Converts the extracted data into clean, semantic Markdown."
     ],
-    stack: ["Python", "NLP", "FastAPI"],
+    stack: ["Python", "spaCy", "FastAPI", "PyTesseract"],
     metrics: [
       { label: "Processing Speed", value: "2s / page" },
     ],
@@ -46,7 +48,9 @@ export const projects: Project[] = [
       "Table extraction to Markdown grids",
       "RESTful API for easy integration"
     ],
-    challengesAndLessons: "Handling multi-column PDFs was a major roadblock. Implementing a specialized reading-order algorithm solved the issue of text interleaving."
+    challengesAndLessons: "Handling multi-column PDFs was a major roadblock. Implementing a specialized reading-order algorithm solved the issue of text interleaving.",
+    problem: "Extracting structured text from PDFs typically breaks layouts, making it impossible to pass clean data to LLMs or Markdown editors.",
+    solution: "Built a robust NLP engine using PyTesseract and spaCy that detects layout boundaries first, preserving columns and tables before text extraction."
   },
   {
     id: "bizit",
@@ -56,7 +60,7 @@ export const projects: Project[] = [
       "A complete business management suite supporting multiple tenants securely.",
       "Built with Supabase for robust Row Level Security and real-time features."
     ],
-    stack: ["Next.js", "Supabase", "TypeScript"],
+    stack: ["SaaS", "React.js", " FastAPI", "PostgreSQL"],
     metrics: [
       { label: "Active Tenants", value: "10+" },
       { label: "Uptime", value: "99.9%" }
@@ -71,6 +75,8 @@ export const projects: Project[] = [
       "Real-time dashboard analytics",
       "Role-based access control (RBAC)"
     ],
-    challengesAndLessons: "Designing the RLS policies in Supabase took meticulous planning to ensure zero data leakage across tenants while maintaining high query performance."
+    challengesAndLessons: "Designing the RLS policies in Supabase took meticulous planning to ensure zero data leakage across tenants while maintaining high query performance.",
+    problem: "Small businesses need a unified suite for management but existing enterprise solutions are too expensive and complex.",
+    solution: "Created a scalable, multi-tenant SaaS application that isolates tenant data securely at the database level using PostgreSQL Row Level Security."
   }
 ];
