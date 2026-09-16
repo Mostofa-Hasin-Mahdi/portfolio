@@ -89,7 +89,7 @@ export function Hero() {
 
             <div className="flex items-center gap-4 ml-4">
               <a
-                href="https://github.com/yourusername"
+                href="https://github.com/Mostofa-Hasin-Mahdi"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="p-3 rounded-lg bg-surface border border-border text-muted hover:text-accent hover:border-accent transition-colors"
@@ -98,7 +98,7 @@ export function Hero() {
                 <GithubIcon size={20} />
               </a>
               <a
-                href="https://linkedin.com/in/yourusername"
+                href="https://www.linkedin.com/in/mhmrmahdi/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="p-3 rounded-lg bg-surface border border-border text-muted hover:text-accent hover:border-accent transition-colors"
