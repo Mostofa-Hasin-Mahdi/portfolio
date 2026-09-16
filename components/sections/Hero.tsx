@@ -36,7 +36,7 @@ export function Hero() {
         >
           <motion.div variants={itemVariants} className="mb-4 inline-flex">
             <span className="px-3 py-1 rounded-full bg-surface border border-border text-xs font-mono text-accent">
-              Available for full-time roles from Jan 2027
+              Available for full-time roles 
             </span>
           </motion.div>
 
@@ -51,7 +51,7 @@ export function Hero() {
             variants={itemVariants}
             className="text-xl md:text-2xl text-accent font-medium mb-6"
           >
-            Software Engineer - AI & Full Stack
+            Software Engineer • AI & Full Stack
           </motion.h2>
 
           <motion.p 
@@ -69,13 +69,13 @@ export function Hero() {
           </motion.p>
 
           <motion.div variants={itemVariants} className="flex flex-wrap items-center gap-4">
-            <Link
+            <a
               href="#projects"
               className="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-accent text-white font-medium hover:bg-accentHover transition-colors focus:ring-2 focus:ring-accent focus:ring-offset-2 focus:ring-offset-bg"
             >
               View Projects
               <ArrowRight size={18} />
-            </Link>
+            </a>
 
             <a
               href="/assets/Mostofa_Hasin_Mahdi_Resume.pdf"

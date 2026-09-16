@@ -16,8 +16,36 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Mostofa Hasin Mahdi | Software Engineer",
-  description: "Portfolio of Mostofa Hasin Mahdi, AI & Full Stack Software Engineer.",
+  title: {
+    default: "Mostofa Hasin Mahdi | Software Engineer",
+    template: "%s | Mostofa Hasin Mahdi",
+  },
+  description: "Portfolio of Mostofa Hasin Mahdi, an AI & Full Stack Software Engineer specializing in scalable web apps and machine learning pipelines.",
+  keywords: ["Software Engineer", "Full Stack Developer", "AI Engineer", "Next.js", "React", "Python", "Bangladesh", "Portfolio"],
+  authors: [{ name: "Mostofa Hasin Mahdi" }],
+  creator: "Mostofa Hasin Mahdi",
+  openGraph: {
+    type: "website",
+    locale: "en_US",
+    url: "https://yourdomain.com",
+    title: "Mostofa Hasin Mahdi | Software Engineer",
+    description: "Portfolio of Mostofa Hasin Mahdi, an AI & Full Stack Software Engineer.",
+    siteName: "Mostofa Hasin Mahdi Portfolio",
+    images: [
+      {
+        url: "/assets/PXL_20260816_09094153.jpg",
+        width: 1200,
+        height: 630,
+        alt: "Mostofa Hasin Mahdi",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Mostofa Hasin Mahdi | Software Engineer",
+    description: "Portfolio of Mostofa Hasin Mahdi, an AI & Full Stack Software Engineer.",
+    images: ["/assets/PXL_20260816_09094153.jpg"],
+  },
 };
 
 export default function RootLayout({

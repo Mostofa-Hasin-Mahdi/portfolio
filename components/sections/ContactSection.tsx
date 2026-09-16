@@ -29,7 +29,7 @@ export function ContactSection() {
 
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-12">
             <a
-              href="mailto:your.email@example.com"
+              href="mailto:hasinmahdi.hmr@gmail.com"
               className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-4 rounded-xl bg-accent text-white font-medium text-lg hover:bg-accentHover transition-all hover:-translate-y-1 hover:shadow-lg focus:ring-2 focus:ring-accent focus:ring-offset-2 focus:ring-offset-bg"
             >
               <Mail size={20} />
@@ -48,7 +48,7 @@ export function ContactSection() {
 
           <div className="flex items-center justify-center gap-6">
             <a
-              href="https://github.com/yourusername"
+              href="https://github.com/Mostofa-Hasin-Mahdi"
               target="_blank"
               rel="noopener noreferrer"
               className="p-4 rounded-full bg-surface border border-border text-muted hover:text-accent hover:border-accent hover:scale-110 transition-all shadow-sm"
@@ -57,7 +57,7 @@ export function ContactSection() {
               <GithubIcon size={24} />
             </a>
             <a
-              href="https://linkedin.com/in/yourusername"
+              href="https://www.linkedin.com/in/mhmrmahdi/"
               target="_blank"
               rel="noopener noreferrer"
               className="p-4 rounded-full bg-surface border border-border text-muted hover:text-accent hover:border-accent hover:scale-110 transition-all shadow-sm"

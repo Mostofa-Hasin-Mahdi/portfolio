@@ -45,8 +45,17 @@ export function Footer() {
           </a>
         </div>
 
-        <div className="text-sm text-muted text-center md:text-right">
-          &copy; {currentYear} Mostofa Hasin Mahdi. <br className="hidden md:block" /> All rights reserved.
+        <div className="flex flex-col md:flex-row items-center gap-4 text-sm text-muted">
+          <div className="text-center md:text-left">
+            &copy; {currentYear} Mostofa Hasin Mahdi. <br className="hidden md:block" /> All rights reserved.
+          </div>
+          
+          <a 
+            href="#"
+            className="md:ml-auto inline-flex items-center gap-1 hover:text-accent transition-colors"
+          >
+            Back to top ↑
+          </a>
         </div>
       </div>
     </footer>
