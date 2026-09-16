@@ -38,7 +38,8 @@ export function ContactSection() {
 
             <a
               href="/assets/Mostofa_Hasin_Mahdi_Resume.pdf"
-              download
+              target="_blank"
+              rel="noopener noreferrer"
               className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-4 rounded-xl bg-surface border border-border text-text font-medium text-lg hover:border-accent hover:text-accent transition-all hover:-translate-y-1 focus:ring-2 focus:ring-accent focus:ring-offset-2 focus:ring-offset-bg"
             >
               <Download size={20} />

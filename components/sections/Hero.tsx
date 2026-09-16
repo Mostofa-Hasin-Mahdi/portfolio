@@ -79,7 +79,8 @@ export function Hero() {
 
             <a
               href="/assets/Mostofa_Hasin_Mahdi_Resume.pdf"
-              download
+              target="_blank"
+              rel="noopener noreferrer"
               className="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-surface border border-border text-text font-medium hover:border-accent hover:text-accent transition-colors focus:ring-2 focus:ring-accent focus:ring-offset-2 focus:ring-offset-bg"
             >
               <Download size={18} />
