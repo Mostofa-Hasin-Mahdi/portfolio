@@ -25,8 +25,8 @@ export function AboutSection() {
                 intuitive, user-facing applications. 
               </p>
               <p>
-                Whether it's optimizing OCR pipelines for medical records or building 
-                scalable SaaS architectures with PostgreSQL row-level security, I focus on writing 
+                Whether it's optimizing OCR pipelines, building and fine tuning Machine Learning models for accuracy and performance, or deploying 
+                scalable Multi-Tenant SaaS applications, I focus on writing 
                 clean, maintainable code that delivers real-world impact.
               </p>
             </div>

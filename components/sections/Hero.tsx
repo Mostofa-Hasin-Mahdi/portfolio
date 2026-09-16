@@ -58,7 +58,7 @@ export function Hero() {
             variants={itemVariants}
             className="text-lg text-muted leading-relaxed mb-4"
           >
-            I build intelligent systems that ship from XGBoost clinical predictors to production OCR pipelines.
+            I build intelligent systems that ship, from ML models to full-stack platforms.
           </motion.p>
           
           <motion.p 

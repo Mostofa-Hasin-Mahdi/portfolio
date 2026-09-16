@@ -18,6 +18,29 @@ export function Navbar() {
 
   const toggleMenu = () => setIsOpen(!isOpen);
 
+  const handleScroll = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+    // If we are on the homepage and clicking a hash link
+    if (href.startsWith("#")) {
+      e.preventDefault();
+      setIsOpen(false);
+      
+      const targetId = href.replace("#", "");
+      
+      // Use a slight timeout to let the mobile menu close before scrolling
+      setTimeout(() => {
+        const elem = document.getElementById(targetId);
+        if (elem) {
+          elem.scrollIntoView({ behavior: "smooth" });
+        } else {
+          // If not on homepage, navigate to homepage hash
+          window.location.href = "/" + href;
+        }
+      }, 50);
+    } else {
+      setIsOpen(false);
+    }
+  };
+
   return (
     <header className="fixed top-0 inset-x-0 z-50 bg-bg/80 backdrop-blur-md border-b border-border">
       <div className="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
@@ -32,13 +55,14 @@ export function Navbar() {
         {/* Desktop Nav */}
         <nav className="hidden md:flex gap-8">
           {navLinks.map((link) => (
-            <Link
+            <a
               key={link.name}
               href={link.href}
-              className="text-sm font-medium text-muted hover:text-accent transition-colors"
+              onClick={(e) => handleScroll(e, link.href)}
+              className="text-sm font-medium text-muted hover:text-accent transition-colors cursor-pointer"
             >
               {link.name}
-            </Link>
+            </a>
           ))}
         </nav>
 
@@ -64,14 +88,14 @@ export function Navbar() {
           >
             <nav className="flex flex-col px-6 py-4 space-y-4">
               {navLinks.map((link) => (
-                <Link
+                <a
                   key={link.name}
                   href={link.href}
-                  onClick={() => setIsOpen(false)}
-                  className="text-base font-medium text-muted hover:text-accent transition-colors"
+                  onClick={(e) => handleScroll(e, link.href)}
+                  className="text-base font-medium text-muted hover:text-accent transition-colors cursor-pointer"
                 >
                   {link.name}
-                </Link>
+                </a>
               ))}
             </nav>
           </motion.div>
