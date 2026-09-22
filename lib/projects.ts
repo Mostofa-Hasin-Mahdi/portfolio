@@ -76,7 +76,7 @@ export const projects: Project[] = [
       { label: "Uptime", value: "99.9%" }
     ],
     links: {
-      liveUrl: "bizit-business-suite.vercel.app",
+      liveUrl: "https://bizit-business-suite.vercel.app",
       githubUrl: "https://github.com/Mostofa-Hasin-Mahdi/Bizit"
     },
     imageUrls: [
