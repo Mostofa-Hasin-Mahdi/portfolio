@@ -51,7 +51,7 @@ export function Hero() {
             variants={itemVariants}
             className="text-xl md:text-2xl text-accent font-medium mb-6"
           >
-            Software Engineer • AI & Full Stack
+            Software Engineer • ML & Full Stack
           </motion.h2>
 
           <motion.p 

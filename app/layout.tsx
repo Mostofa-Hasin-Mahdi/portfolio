@@ -20,8 +20,8 @@ export const metadata: Metadata = {
     default: "Mostofa Hasin Mahdi | Software Engineer",
     template: "%s | Mostofa Hasin Mahdi",
   },
-  description: "Portfolio of Mostofa Hasin Mahdi, an AI & Full Stack Software Engineer specializing in scalable web apps and machine learning pipelines.",
-  keywords: ["Software Engineer", "Full Stack Developer", "AI Engineer", "Next.js", "React", "Python", "Bangladesh", "Portfolio"],
+  description: "Portfolio of Mostofa Hasin Mahdi, an ML & Full Stack Software Engineer specializing in scalable web apps and machine learning pipelines.",
+  keywords: ["Software Engineer", "Full Stack Developer", "ML Engineer", "Next.js", "React", "Python", "Bangladesh", "Portfolio"],
   authors: [{ name: "Mostofa Hasin Mahdi" }],
   creator: "Mostofa Hasin Mahdi",
   openGraph: {
@@ -29,7 +29,7 @@ export const metadata: Metadata = {
     locale: "en_US",
     url: "https://yourdomain.com",
     title: "Mostofa Hasin Mahdi | Software Engineer",
-    description: "Portfolio of Mostofa Hasin Mahdi, an AI & Full Stack Software Engineer.",
+    description: "Portfolio of Mostofa Hasin Mahdi, an ML & Full Stack Software Engineer.",
     siteName: "Mostofa Hasin Mahdi Portfolio",
     images: [
       {
@@ -43,7 +43,7 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "Mostofa Hasin Mahdi | Software Engineer",
-    description: "Portfolio of Mostofa Hasin Mahdi, an AI & Full Stack Software Engineer.",
+    description: "Portfolio of Mostofa Hasin Mahdi, an ML & Full Stack Software Engineer.",
     images: ["/assets/PXL_20260816_09094153.jpg"],
   },
 };

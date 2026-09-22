@@ -20,7 +20,7 @@ export function AboutSection() {
             </h2>
             <div className="space-y-4 text-muted text-lg leading-relaxed mb-8">
               <p>
-                I am a Software Engineer specializing in AI and Full Stack development. 
+                I am a Software Engineer specializing in ML and Full Stack development. 
                 My passion lies in bridging the gap between complex machine learning models and 
                 intuitive, user-facing applications. 
               </p>

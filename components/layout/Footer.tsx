@@ -13,7 +13,7 @@ export function Footer() {
             MHM.
           </Link>
           <p className="text-sm text-muted text-center md:text-left">
-            Software Engineer • AI & Full Stack
+            Software Engineer • ML & Full Stack
           </p>
         </div>
 
