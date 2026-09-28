@@ -4,10 +4,27 @@ import { motion } from "framer-motion";
 import { Mail, Download } from "lucide-react";
 import { GithubIcon, LinkedinIcon } from "@/components/ui/Icons";
 
+function SignalBeacon() {
+  return (
+    <div className="absolute top-1/2 left-1/2 w-full h-full -translate-x-1/2 -translate-y-1/2 z-0 pointer-events-none overflow-hidden flex items-center justify-center opacity-30 dark:opacity-40">
+      {Array.from({ length: 4 }).map((_, i) => (
+        <motion.div
+          key={i}
+          className="absolute rounded-full border border-accent shadow-[0_0_20px_rgba(59,130,246,0.3)]"
+          initial={{ width: 0, height: 0, opacity: 1 }}
+          animate={{ width: "200vw", height: "200vw", opacity: 0 }}
+          transition={{ duration: 12, repeat: Infinity, delay: i * 3, ease: "linear" }}
+        />
+      ))}
+    </div>
+  );
+}
+
 export function ContactSection() {
   return (
-    <section id="contact" className="py-24 bg-bg border-t border-border/50">
-      <div className="max-w-3xl mx-auto px-6 text-center">
+    <section id="contact" className="py-24 bg-bg border-t border-border/50 relative overflow-hidden">
+      <SignalBeacon />
+      <div className="max-w-3xl mx-auto px-6 text-center relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}

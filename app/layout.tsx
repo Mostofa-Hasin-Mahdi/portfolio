@@ -1,9 +1,10 @@
 import type { Metadata } from "next";
 import { Inter, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
-import { Navbar } from "@/components/layout/Navbar";
+import { NewNavbar } from "@/components/layout/NewNavbar";
 import { Footer } from "@/components/layout/Footer";
 import { ScrollToTop } from "@/components/ui/ScrollToTop";
+import { ThemeProvider } from "@/components/ThemeProvider";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -57,12 +58,15 @@ export default function RootLayout({
     <html
       lang="en"
       className={`${inter.variable} ${jetbrainsMono.variable} h-full antialiased scroll-smooth`}
+      suppressHydrationWarning
     >
-      <body className="min-h-full flex flex-col bg-bg text-text selection:bg-accent selection:text-white pt-16">
-        <Navbar />
-        <main className="flex-grow">{children}</main>
-        <Footer />
-        <ScrollToTop />
+      <body suppressHydrationWarning className="min-h-full flex flex-col bg-bg text-text selection:bg-accent selection:text-white transition-colors duration-300">
+        <ThemeProvider attribute="class" defaultTheme="light" enableSystem={false}>
+          <NewNavbar />
+          <main className="flex-grow">{children}</main>
+          <Footer />
+          <ScrollToTop />
+        </ThemeProvider>
       </body>
     </html>
   );
