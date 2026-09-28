@@ -147,7 +147,7 @@ export function ProjectCaseStudy({ project, index }: { project: Project, index: 
             exit={{ height: 0, opacity: 0 }}
             className="overflow-hidden relative z-10"
           >
-            <div className="pb-12 pt-4 grid grid-cols-1 md:grid-cols-12 gap-12">
+            <div className="px-8 pb-12 pt-4 md:px-12 grid grid-cols-1 md:grid-cols-12 gap-12">
               <div className="md:col-span-8">
                 {project.imageUrls && project.imageUrls.length > 0 && (
                   <div className="relative w-full aspect-video border border-border mb-8 bg-surface overflow-hidden">
