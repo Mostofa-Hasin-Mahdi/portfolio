@@ -5,7 +5,7 @@ import { motion, useScroll, useTransform, MotionValue } from 'framer-motion';
 
 const journeyMilestones = [
   { year: "2022", title: "Started CSE", desc: "Began BSc in Computer Science. Discovered a passion for algorithms and systems." },
-  { year: "2023", title: "Foundations & Contests", desc: "Data Structures, OOP, and databases. Participated in ICPC and IUPC regionals." },
+  { year: "2023", title: "Foundations & Contests", desc: "Data Structures, OOP, and databases. Participated in ICPC and IUPC prelims." },
   { year: "2024", title: "Web & Backend", desc: "Built full-stack platforms and learned FastAPI, React, and PostgreSQL." },
   { year: "2025", title: "AI & ML Integration", desc: "Shifted focus to intelligent systems, Deepfake Detection, and NAB Preg AI." },
   { year: "2026", title: "Software Engineering", desc: "Thesis completion and preparing for graduation. Ready for production roles." },
