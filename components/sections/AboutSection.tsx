@@ -63,8 +63,8 @@ export function AboutSection() {
           className="md:col-span-4"
         >
           <div className="font-mono text-sm text-accent mb-4">(01) ABOUT</div>
-          <h2 className="text-3xl md:text-5xl font-bold tracking-tight mb-8">
-            I'm Mahdi.
+          <h2 className="text-3xl md:text-5xl font-bold tracking-tight mb-8 flex items-baseline gap-2">
+            I'm <span style={{ fontFamily: 'var(--font-cursive)' }} className="text-accent text-5xl md:text-7xl font-normal tracking-normal px-1">Mahdi</span>.
           </h2>
 
           <div className="bg-bg border border-border p-6 rounded-sm font-mono text-xs space-y-6">

@@ -69,7 +69,7 @@ export function NewHero() {
           </motion.div>
           
           <motion.h1 variants={itemVariants} className="text-5xl md:text-7xl font-extrabold tracking-tight mb-6 leading-[1.1]">
-            MOSTOFA<br />HASIN<br />MAHDI
+            MOSTOFA<br />HASIN<br /><span style={{ fontFamily: 'var(--font-cursive)' }} className="text-accent font-normal tracking-normal text-6xl md:text-8xl ml-2">Mahdi</span>
           </motion.h1>
           
           <motion.p variants={itemVariants} className="text-muted text-lg md:text-xl max-w-md mb-8">

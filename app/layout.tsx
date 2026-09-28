@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Inter, JetBrains_Mono } from "next/font/google";
+import { Inter, JetBrains_Mono, Playfair_Display } from "next/font/google";
 import "./globals.css";
 import { NewNavbar } from "@/components/layout/NewNavbar";
 import { Footer } from "@/components/layout/Footer";
@@ -13,6 +13,12 @@ const inter = Inter({
 
 const jetbrainsMono = JetBrains_Mono({
   variable: "--font-jetbrains-mono",
+  subsets: ["latin"],
+});
+
+const cursiveFont = Playfair_Display({
+  style: "italic",
+  variable: "--font-cursive",
   subsets: ["latin"],
 });
 
@@ -55,9 +61,9 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html
+      <html
       lang="en"
-      className={`${inter.variable} ${jetbrainsMono.variable} h-full antialiased scroll-smooth`}
+      className={`${inter.variable} ${jetbrainsMono.variable} ${cursiveFont.variable} h-full antialiased scroll-smooth`}
       suppressHydrationWarning
     >
       <body suppressHydrationWarning className="min-h-full flex flex-col bg-bg text-text selection:bg-accent selection:text-white transition-colors duration-300">

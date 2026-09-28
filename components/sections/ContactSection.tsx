@@ -35,8 +35,8 @@ export function ContactSection() {
             Available for full-time roles
           </span>
           
-          <h2 className="text-4xl md:text-5xl font-bold text-text mb-6 tracking-tight">
-            Let's build something great.
+          <h2 className="text-4xl md:text-5xl font-bold text-text mb-6 tracking-tight flex items-baseline justify-center gap-2 flex-wrap">
+            Let's build something <span style={{ fontFamily: 'var(--font-cursive)' }} className="text-accent text-5xl md:text-7xl font-normal lowercase tracking-normal">great.</span>
           </h2>
           
           <p className="text-lg text-muted mb-10 leading-relaxed max-w-2xl mx-auto">
