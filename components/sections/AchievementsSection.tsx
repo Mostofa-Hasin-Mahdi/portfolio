@@ -86,7 +86,7 @@ export function DesktopAchievementsSection() {
         
         <div className="absolute top-24 left-0 w-full px-6 max-w-6xl mx-auto flex flex-col items-center justify-center z-10 pointer-events-none">
           <div className="font-mono text-sm text-accent mb-2">(05) MILESTONES</div>
-          <h2 className="text-4xl md:text-5xl font-bold tracking-tight text-center">Honors & Achievements</h2>
+          <h2 className="text-4xl md:text-5xl font-bold tracking-tight text-center">Awards & Achievements</h2>
           <p className="text-muted font-mono text-xs uppercase tracking-widest mt-4 animate-pulse">
             &darr; Keep scrolling to stack &darr;
           </p>

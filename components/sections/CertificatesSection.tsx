@@ -58,7 +58,7 @@ export function CertificatesSection() {
     <section id="certificates" className="py-24 border-t border-border bg-bg overflow-hidden relative">
       <div className="max-w-6xl mx-auto px-6 mb-16 flex flex-col items-center text-center">
         <div className="font-mono text-sm text-accent mb-2">(06) CREDENTIALS</div>
-        <h2 className="text-4xl md:text-5xl font-bold tracking-tight text-text">Awards & Certificates</h2>
+        <h2 className="text-4xl md:text-5xl font-bold tracking-tight text-text">Honors & Certificates</h2>
         <p className="text-muted mt-4 text-sm font-mono max-w-lg">
           Hover over the gallery to explore my competitive programming and hackathon milestones.
         </p>
