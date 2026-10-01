@@ -41,7 +41,7 @@ export const metadata: Metadata = {
     siteName: "Mostofa Hasin Mahdi Portfolio",
     images: [
       {
-        url: "/assets/PXL_20260816_09094153.jpg",
+        url: "/icon.png",
         width: 1200,
         height: 630,
         alt: "Mostofa Hasin Mahdi",
@@ -52,7 +52,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Mostofa Hasin Mahdi | Software Engineer",
     description: "Portfolio of Mostofa Hasin Mahdi, an ML & Full Stack Software Engineer.",
-    images: ["/assets/PXL_20260816_09094153.jpg"],
+    images: ["/icon.png"],
   },
 };
 
