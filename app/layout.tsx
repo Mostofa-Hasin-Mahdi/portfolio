@@ -39,20 +39,11 @@ export const metadata: Metadata = {
     title: "Mostofa Hasin Mahdi | Software Engineer",
     description: "Portfolio of Mostofa Hasin Mahdi, an ML & Full Stack Software Engineer.",
     siteName: "Mostofa Hasin Mahdi Portfolio",
-    images: [
-      {
-        url: "/icon.png",
-        width: 1200,
-        height: 630,
-        alt: "Mostofa Hasin Mahdi",
-      },
-    ],
   },
   twitter: {
     card: "summary_large_image",
     title: "Mostofa Hasin Mahdi | Software Engineer",
     description: "Portfolio of Mostofa Hasin Mahdi, an ML & Full Stack Software Engineer.",
-    images: ["/icon.png"],
   },
 };
 
