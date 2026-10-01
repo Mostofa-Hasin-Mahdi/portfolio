@@ -61,20 +61,22 @@ export function InteractiveSkills() {
             {skills.map((skill, i) => (
               <motion.div
                 key={skill}
-                drag
+                drag={!isMobile}
                 dragConstraints={containerRef}
                 dragElastic={0.1}
-                whileDrag={{ scale: 1.1, zIndex: 50, cursor: 'grabbing' }}
-                initial={{ opacity: 0, scale: 0 }}
+                whileDrag={!isMobile ? { scale: 1.1, zIndex: 50, cursor: 'grabbing' } : {}}
+                initial={{ opacity: 0, scale: 0.8 }}
                 whileInView={{ opacity: 1, scale: 1 }}
                 transition={{ 
-                  delay: i * 0.03, 
-                  type: 'spring', 
+                  delay: isMobile ? 0 : i * 0.03, 
+                  type: isMobile ? 'tween' : 'spring', 
                   stiffness: 300, 
                   damping: 20 
                 }}
                 viewport={{ once: true, margin: "-50px" }}
-                className="p-[1px] rounded-full bg-border hover:bg-gradient-to-r hover:from-accent hover:via-purple-500 hover:to-emerald-400 transition-colors duration-300 shadow-[0_0_15px_rgba(0,0,0,0.1)] cursor-grab active:cursor-grabbing group"
+                className={`p-[1px] rounded-full bg-border transition-colors duration-300 shadow-[0_0_15px_rgba(0,0,0,0.1)] group ${
+                  !isMobile ? "hover:bg-gradient-to-r hover:from-accent hover:via-purple-500 hover:to-emerald-400 cursor-grab active:cursor-grabbing" : ""
+                }`}
               >
                 <div className="px-6 py-3 rounded-full bg-bg text-text font-mono text-sm select-none h-full w-full flex items-center justify-center">
                   {skill}

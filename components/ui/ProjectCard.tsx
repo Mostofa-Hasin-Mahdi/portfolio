@@ -3,6 +3,7 @@ import { ArrowRight, ExternalLink } from "lucide-react";
 import { Project } from "@/lib/types";
 import { GithubIcon } from "@/components/ui/Icons";
 import { ImageCarousel } from "@/components/ui/ImageCarousel";
+import { SpotlightCard } from "@/components/ui/SpotlightCard";
 
 interface ProjectCardProps {
   project: Project;
@@ -10,20 +11,35 @@ interface ProjectCardProps {
 
 export function ProjectCard({ project }: ProjectCardProps) {
   return (
-    <div className="group flex flex-col bg-surface border border-border rounded-2xl overflow-hidden hover:border-accent transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_8px_30px_rgb(0,0,0,0.12)] hover:shadow-accent/10">
-      {/* Thumbnail */}
-      <div className="relative h-64 w-full bg-border/50 overflow-hidden">
-        {project.imageUrls && project.imageUrls.length > 0 ? (
-          <ImageCarousel
-            images={project.imageUrls}
-            alt={project.title}
-            className="w-full h-full group-hover:scale-105 transition-transform duration-500"
-          />
-        ) : (
-          <div className="absolute inset-0 flex items-center justify-center text-muted">
-            No image available
+    <SpotlightCard className="group flex flex-col h-full hover:-translate-y-1 hover:shadow-[0_8px_30px_rgb(0,0,0,0.12)] hover:shadow-accent/10">
+      {/* Thumbnail Container */}
+      <div className="relative h-64 w-full bg-[#111113] overflow-hidden flex items-end justify-center px-6 pt-6">
+        
+        {/* Mock Screen (Browser / OS Window) */}
+        <div className="w-full h-full relative rounded-t-lg bg-bg border border-border border-b-0 shadow-2xl overflow-hidden flex flex-col group-hover:-translate-y-2 transition-transform duration-500">
+          
+          {/* Screen Header (Traffic Lights) */}
+          <div className="h-5 w-full bg-surface border-b border-border flex items-center px-2.5 gap-1.5 shrink-0">
+            <div className="w-1.5 h-1.5 rounded-full bg-border group-hover:bg-red-500/80 transition-colors duration-500" />
+            <div className="w-1.5 h-1.5 rounded-full bg-border group-hover:bg-yellow-500/80 transition-colors duration-500" />
+            <div className="w-1.5 h-1.5 rounded-full bg-border group-hover:bg-green-500/80 transition-colors duration-500" />
           </div>
-        )}
+          
+          {/* Screen Content */}
+          <div className="relative flex-grow w-full overflow-hidden">
+            {project.imageUrls && project.imageUrls.length > 0 ? (
+              <ImageCarousel
+                images={project.imageUrls}
+                alt={project.title}
+                className="w-full h-full"
+              />
+            ) : (
+              <div className="absolute inset-0 flex items-center justify-center text-muted text-xs font-mono">
+                [ No visual data ]
+              </div>
+            )}
+          </div>
+        </div>
         
         {/* Metric Highlight Overlay */}
         {project.metrics && project.metrics.length > 0 && (
@@ -91,6 +107,6 @@ export function ProjectCard({ project }: ProjectCardProps) {
           </div>
         </div>
       </div>
-    </div>
+    </SpotlightCard>
   );
 }

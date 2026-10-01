@@ -1,6 +1,6 @@
 'use client';
 import { projects } from '@/lib/projects';
-import { ProjectCaseStudy } from '@/components/ui/ProjectCaseStudy';
+import { ProjectCard } from '@/components/ui/ProjectCard';
 import { motion } from 'framer-motion';
 
 function WorkBackground() {
@@ -33,9 +33,9 @@ export function WorkSection() {
           <h2 className="text-3xl md:text-5xl font-bold tracking-tight text-text">Engineering Case Studies</h2>
         </div>
         
-        <div className="border-t border-border">
-          {projects.map((project, index) => (
-            <ProjectCaseStudy key={project.id} project={project} index={index} />
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 border-t border-border pt-12">
+          {projects.map((project) => (
+            <ProjectCard key={project.id} project={project} />
           ))}
         </div>
       </div>
