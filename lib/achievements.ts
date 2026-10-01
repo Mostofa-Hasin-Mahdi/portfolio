@@ -36,13 +36,16 @@ export const achievementsData: Achievement[] = [
   {
     id: "leetcode",
     title: "135+ LeetCode problems solved",
+    description: "Solved problems across different patterns including Arrays, Strings, Trees, and Graphs. It helped me to strengthen my problem solving skills and data structures knowledge.",
     year: "Present",
     icon: "💻",
+    mediaType: "image",
+    mediaUrl: "/assets/achievements/leetcode.png"
   },
   {
     id: "cgpa",
     title: "CGPA 3.96 / 4.00",
-    description: "BSc in Computer Science and Engineering",
+    description: "BSc in Computer Science and Engineering. A journey of consistency and hard work. I have always tried to do the best in my academic life and I'm proud of my results.",
     year: "Nov 2026",
     icon: "🎓",
   },
