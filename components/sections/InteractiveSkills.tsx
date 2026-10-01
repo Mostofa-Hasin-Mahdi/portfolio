@@ -7,11 +7,11 @@ const skills = [
   // Backend & Databases
   'Python', 'FastAPI', 'Node.js', 'PostgreSQL', 'Supabase', 'Docker',
   // AI & ML
-  'PyTorch', 'Scikit-learn', 'XGBoost', 'spaCy', 'RAG', 'Mistral AI', 'Computer Vision',
+  'Pytesseract', 'Scikit-learn', 'XGBoost', 'spaCy', 'RAG', 'Mistral AI', 'Computer Vision',
   // Frontend
   'React.js', 'Next.js', 'TypeScript', 'TailwindCSS', 'Framer Motion',
   // Tools & Systems
-  'Git', 'Vercel', 'Linux', 'Microservices'
+  'Github Actions', 'Vercel', 'Linux', 'Pytest', 'Microservices'
 ];
 
 export function InteractiveSkills() {
