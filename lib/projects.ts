@@ -92,7 +92,7 @@ export const projects: Project[] = [
       "Real-time dashboard analytics with sub-10ms response time",
       "3-tier Role-based access control (RBAC)"
     ],
-    challengesAndLessons: "Designing the schema in Supabase and queries took meticulous planning to ensure zero data leakage across tenants while maintaining high query performance.",
+    challengesAndLessons: "Designing the schema and queries took meticulous planning to ensure zero data leakage across tenants while maintaining high query performance. Tested with 17 test cases that passed successfully.",
     problem: "Small businesses need a unified suite for management but existing enterprise solutions are too expensive and complex.",
     solution: "Created a scalable, multi-tenant SaaS application that isolates tenant data securely."
   },
