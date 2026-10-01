@@ -1,12 +1,13 @@
 import type { Metadata } from "next";
-import { Inter, JetBrains_Mono, Playfair_Display } from "next/font/google";
+import { Space_Grotesk, JetBrains_Mono, Playfair_Display } from "next/font/google";
 import "./globals.css";
 import { NewNavbar } from "@/components/layout/NewNavbar";
 import { Footer } from "@/components/layout/Footer";
 import { ScrollToTop } from "@/components/ui/ScrollToTop";
 import { ThemeProvider } from "@/components/ThemeProvider";
+import { BootSequence } from "@/components/ui/BootSequence";
 
-const inter = Inter({
+const spaceGrotesk = Space_Grotesk({
   variable: "--font-inter",
   subsets: ["latin"],
 });
@@ -63,15 +64,17 @@ export default function RootLayout({
   return (
       <html
       lang="en"
-      className={`${inter.variable} ${jetbrainsMono.variable} ${cursiveFont.variable} h-full antialiased scroll-smooth`}
+      className={`${spaceGrotesk.variable} ${jetbrainsMono.variable} ${cursiveFont.variable} h-full antialiased scroll-smooth dark`}
       suppressHydrationWarning
     >
       <body suppressHydrationWarning className="min-h-full flex flex-col bg-bg text-text selection:bg-accent selection:text-white transition-colors duration-300">
-        <ThemeProvider attribute="class" defaultTheme="light" enableSystem={false}>
-          <NewNavbar />
-          <main className="flex-grow">{children}</main>
-          <Footer />
-          <ScrollToTop />
+        <ThemeProvider attribute="class" defaultTheme="dark" enableSystem={false} forcedTheme="dark">
+          <BootSequence>
+            <NewNavbar />
+            <main className="flex-grow">{children}</main>
+            <Footer />
+            <ScrollToTop />
+          </BootSequence>
         </ThemeProvider>
       </body>
     </html>

@@ -4,6 +4,7 @@ import React from 'react';
 import { motion, Variants } from 'framer-motion';
 import Image from 'next/image';
 import Link from 'next/link';
+import { IDCard } from '@/components/ui/IDCard';
 
 function HeroBackground() {
   return (
@@ -69,7 +70,7 @@ export function NewHero() {
           </motion.div>
           
           <motion.h1 variants={itemVariants} className="text-5xl md:text-7xl font-extrabold tracking-tight mb-6 leading-[1.1]">
-            MOSTOFA<br />HASIN<br /><span style={{ fontFamily: 'var(--font-cursive)' }} className="text-accent font-normal tracking-normal text-6xl md:text-8xl ml-2">Mahdi</span>
+            MOSTOFA<br />HASIN<br /><span className="text-transparent font-black tracking-normal text-6xl md:text-8xl ml-2" style={{ WebkitTextStroke: "2px var(--color-accent)" }}>MAHDI</span>
           </motion.h1>
           
           <motion.p variants={itemVariants} className="text-muted text-lg md:text-xl max-w-md mb-8">
@@ -95,27 +96,9 @@ export function NewHero() {
           initial={{ opacity: 0, scale: 0.95 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.8, delay: 0.5, ease: "easeOut" }}
-          className="md:col-span-5 flex justify-center md:justify-end"
+          className="md:col-span-5 flex justify-center md:justify-end mt-12 md:mt-0"
         >
-          <div className="relative w-64 h-80 md:w-80 md:h-[400px] border border-border p-2 bg-surface/50 backdrop-blur-sm rounded-sm">
-            <motion.div 
-              whileHover={{ scale: 1.05, rotate: 2 }}
-              transition={{ type: "spring", stiffness: 300, damping: 20 }}
-              className="relative w-full h-full overflow-hidden rounded-sm bg-accent/5 transition-shadow duration-500 hover:shadow-[0_0_40px_rgba(59,130,246,0.3)] dark:hover:shadow-[0_0_40px_rgba(59,130,246,0.5)]"
-            >
-              <Image 
-                src="/assets/PXL_20260816_09094153.png" 
-                alt="Mostofa Hasin Mahdi"
-                fill
-                priority
-                className="object-cover"
-                sizes="(max-width: 768px) 100vw, 320px"
-              />
-            </motion.div>
-            {/* Decorative technical elements */}
-            <div className="absolute -top-3 -left-3 w-6 h-6 border-t border-l border-muted/30" />
-            <div className="absolute -bottom-3 -right-3 w-6 h-6 border-b border-r border-muted/30" />
-          </div>
+          <IDCard />
         </motion.div>
       </div>
     </section>

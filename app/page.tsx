@@ -13,9 +13,9 @@ export default function Home() {
     <div className="flex flex-col">
       <NewHero />
       <AboutSection />
-      <JourneyTimeline />
       <WorkSection />
       <InteractiveSkills />
+      <JourneyTimeline />
       <EngineeringPrinciples />
       <AchievementsSection />
       <CertificatesSection />

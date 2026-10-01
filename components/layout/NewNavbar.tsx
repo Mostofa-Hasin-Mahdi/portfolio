@@ -46,29 +46,10 @@ export function NewNavbar() {
           <Link href="#journey" className="hover:text-text transition-colors">JOURNEY</Link>
           <Link href="#contact" className="hover:text-text transition-colors">CONTACT</Link>
           
-          {mounted && (
-            <button 
-              onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
-              className="p-1.5 hover:bg-surface rounded-full transition-colors text-text"
-              aria-label="Toggle theme"
-            >
-              <Sun className="h-4 w-4 hidden dark:block" />
-              <Moon className="h-4 w-4 block dark:hidden" />
-            </button>
-          )}
         </nav>
 
         {/* Mobile Nav Toggle & Theme */}
         <div className="flex md:hidden items-center gap-4">
-          {mounted && (
-            <button 
-              onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
-              className="p-1.5 hover:bg-surface rounded-full transition-colors text-text"
-            >
-              <Sun className="h-4 w-4 hidden dark:block" />
-              <Moon className="h-4 w-4 block dark:hidden" />
-            </button>
-          )}
           <button 
             className="text-xs text-muted hover:text-text transition-colors z-50"
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}

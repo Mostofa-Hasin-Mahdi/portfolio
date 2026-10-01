@@ -4,6 +4,7 @@ import React, { useRef } from 'react';
 import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
 import { certificatesData } from '@/lib/certificates';
+import { SpotlightCard } from '@/components/ui/SpotlightCard';
 
 // Register the GSAP plugin for React
 gsap.registerPlugin(useGSAP);
@@ -34,23 +35,22 @@ export function CertificatesSection() {
   };
 
   const renderCard = (cert: typeof certificatesData[0], keyIndex: number) => (
-    <div 
-      key={`${cert.id}-${keyIndex}`} 
-      className="flex-shrink-0 w-[300px] md:w-[500px] p-2 bg-surface rounded-2xl border border-border shadow-sm group hover:border-accent hover:shadow-[0_0_20px_rgba(59,130,246,0.3)] transition-all duration-500"
-    >
-      <div className="w-full aspect-[1.414/1] relative rounded-xl overflow-hidden bg-bg">
-        {/* The aspect ratio above roughly matches an A4 certificate landscape format (1.414:1) */}
-        <img 
-          src={cert.image} 
-          alt={cert.title}
-          className="w-full h-full object-cover object-center group-hover:scale-[1.03] transition-transform duration-700" 
-        />
-        {/* Subtle overlay so text is readable */}
-        <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent flex flex-col justify-end p-6 md:p-8 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-          <h3 className="text-white text-xl md:text-2xl font-bold drop-shadow-lg">{cert.title}</h3>
-          <p className="text-accent text-sm md:text-base font-mono mt-2 drop-shadow-md">{cert.issuer}</p>
+    <div key={`${cert.id}-${keyIndex}`} className="flex-shrink-0 w-[300px] md:w-[500px]">
+      <SpotlightCard className="w-full p-2">
+        <div className="w-full aspect-[1.414/1] relative rounded-xl overflow-hidden bg-bg group">
+          {/* The aspect ratio above roughly matches an A4 certificate landscape format (1.414:1) */}
+          <img 
+            src={cert.image} 
+            alt={cert.title}
+            className="w-full h-full object-cover object-center group-hover:scale-[1.03] transition-transform duration-700" 
+          />
+          {/* Subtle overlay so text is readable */}
+          <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent flex flex-col justify-end p-6 md:p-8 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+            <h3 className="text-white text-xl md:text-2xl font-bold drop-shadow-lg">{cert.title}</h3>
+            <p className="text-accent text-sm md:text-base font-mono mt-2 drop-shadow-md">{cert.issuer}</p>
+          </div>
         </div>
-      </div>
+      </SpotlightCard>
     </div>
   );
 

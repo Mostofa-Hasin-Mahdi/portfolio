@@ -1,23 +1,23 @@
 @import "tailwindcss";
 
 :root {
-  --color-bg: #FAFAFA;
-  --color-surface: #F4F4F5;
-  --color-border: rgba(0, 0, 0, 0.1);
-  --color-accent: #2563EB;
-  --color-accentHover: #1D4ED8;
-  --color-text: #09090B;
-  --color-muted: #71717A;
+  --color-bg: #09090b;
+  --color-surface: #18181b;
+  --color-border: rgba(255, 255, 255, 0.1);
+  --color-accent: #06b6d4;
+  --color-accentHover: #0891b2;
+  --color-text: #f4f4f5;
+  --color-muted: #a1a1aa;
 }
 
 .dark {
-    --color-bg: #0A0A0A;
-    --color-surface: #141414;
-    --color-border: rgba(255, 255, 255, 0.12);
-    --color-accent: #3B82F6;
-    --color-accentHover: #2563EB;
-    --color-text: #F5F5F5;
-    --color-muted: #9A9A9A;
+  --color-bg: #09090b;
+  --color-surface: #18181b;
+  --color-border: rgba(255, 255, 255, 0.1);
+  --color-accent: #06b6d4;
+  --color-accentHover: #0891b2;
+  --color-text: #f4f4f5;
+  --color-muted: #a1a1aa;
 }
 
 @theme {
@@ -36,4 +36,23 @@
 body {
   background-color: var(--color-bg);
   color: var(--color-text);
+}
+
+/* Custom Techwear Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-bg);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-border);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-accent);
 }
