@@ -12,7 +12,7 @@ export const projects: Project[] = [
     stack: ["Mistral AI", "Python", "XGBoost", "MultiOutputClassifier"],
     metrics: [
       { label: "Inference Time", value: "<50ms" },
-      { label: "Accuracy", value: "81%" }
+      { label: "Accuracy", value: "90%" }
     ],
     links: {
       liveUrl: "https://nab-preg-ai-ai-powered-maternal-ris.vercel.app",
@@ -72,7 +72,7 @@ export const projects: Project[] = [
     ],
     stack: ["SaaS", "React.js", " FastAPI", "PostgreSQL"],
     metrics: [
-      { label: "Active Tenants", value: "10+" }
+      { label: "Response Time", value: "Sub-10ms" }
     ],
     links: {
       liveUrl: "https://bizit-business-suite.vercel.app",
