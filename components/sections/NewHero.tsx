@@ -87,7 +87,7 @@ export function NewHero() {
 
           <motion.div variants={itemVariants} className="mt-12 font-mono text-[10px] text-muted flex items-center gap-2">
             <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
-            Based in Bangladesh · CSE Graduate · Open to Software Engineering opportunities
+            Based in Bangladesh · CSE Student · Open to AI, ML, and Software Engineering opportunities
           </motion.div>
         </motion.div>
 
