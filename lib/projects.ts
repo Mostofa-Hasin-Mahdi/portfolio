@@ -88,13 +88,13 @@ export const projects: Project[] = [
       "/assets/Bizit/Screenshot 2026-02-21 012607.png"
     ],
     features: [
-      "Multi-tenant isolation using Supabase RLS",
-      "Real-time dashboard analytics",
-      "Role-based access control (RBAC)"
+      "Multi-tenant isolation",
+      "Real-time dashboard analytics with sub-10ms response time",
+      "3-tier Role-based access control (RBAC)"
     ],
-    challengesAndLessons: "Designing the RLS policies in Supabase took meticulous planning to ensure zero data leakage across tenants while maintaining high query performance.",
+    challengesAndLessons: "Designing the schema in Supabase and queries took meticulous planning to ensure zero data leakage across tenants while maintaining high query performance.",
     problem: "Small businesses need a unified suite for management but existing enterprise solutions are too expensive and complex.",
-    solution: "Created a scalable, multi-tenant SaaS application that isolates tenant data securely at the database level using PostgreSQL Row Level Security."
+    solution: "Created a scalable, multi-tenant SaaS application that isolates tenant data securely."
   },
   {
     id: "porapao",
