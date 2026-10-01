@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useRef, useState, useEffect } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 import { certificatesData } from '@/lib/certificates';
 import { SpotlightCard } from '@/components/ui/SpotlightCard';
 
@@ -9,6 +10,7 @@ export function CertificatesSection() {
   const [isDragging, setIsDragging] = useState(false);
   const [startX, setStartX] = useState(0);
   const [scrollLeft, setScrollLeft] = useState(0);
+  const [selectedImage, setSelectedImage] = useState<string | null>(null);
   const velocityRef = useRef(1); // Auto-scroll speed
   const isHoveredRef = useRef(false);
 
@@ -85,7 +87,15 @@ export function CertificatesSection() {
   const renderCard = (cert: typeof certificatesData[0], keyIndex: number) => (
     <div key={`${cert.id}-${keyIndex}`} className="flex-shrink-0 w-[300px] md:w-[500px]">
       <SpotlightCard className="w-full p-2">
-        <div className="w-full aspect-[1.414/1] relative rounded-xl overflow-hidden bg-bg group">
+        <div 
+          className="w-full aspect-[1.414/1] relative rounded-xl overflow-hidden bg-bg group cursor-zoom-in"
+          onClick={(e) => {
+             // Only open if we are not actively dragging
+             if (!isDragging) {
+               setSelectedImage(cert.image);
+             }
+          }}
+        >
           {/* The aspect ratio above roughly matches an A4 certificate landscape format (1.414:1) */}
           <img 
             src={cert.image} 
@@ -135,6 +145,28 @@ export function CertificatesSection() {
           {certificatesData.map((cert, index) => renderCard(cert, index + certificatesData.length))}
         </div>
       </div>
+
+      <AnimatePresence>
+        {selectedImage && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 z-[100] flex items-center justify-center bg-black/90 p-4 md:p-12 cursor-zoom-out backdrop-blur-sm"
+            onClick={() => setSelectedImage(null)}
+          >
+            <motion.img
+              initial={{ scale: 0.95, y: 20 }}
+              animate={{ scale: 1, y: 0 }}
+              exit={{ scale: 0.95, y: 20 }}
+              transition={{ type: "spring", stiffness: 300, damping: 30 }}
+              src={selectedImage}
+              className="max-w-full max-h-full object-contain rounded-xl border border-white/10 shadow-2xl"
+              alt="Enlarged Certificate"
+            />
+          </motion.div>
+        )}
+      </AnimatePresence>
     </section>
   );
 }

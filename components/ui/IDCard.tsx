@@ -15,7 +15,7 @@ export function IDCard() {
 
   useGSAP(() => {
     // Pendulum swing for the whole assembly (lanyard + card)
-    gsap.to(containerRef.current, {
+    const pendulum = gsap.to(containerRef.current, {
       rotation: 3,
       transformOrigin: '50% -100px', // Pivot from the top of the shortened thread
       ease: 'sine.inOut',
@@ -23,6 +23,20 @@ export function IDCard() {
       yoyo: true,
       repeat: -1,
     });
+
+    const el = containerRef.current;
+    if (!el) return;
+
+    const handleMouseEnter = () => pendulum.pause();
+    const handleMouseLeave = () => pendulum.play();
+
+    el.addEventListener('mouseenter', handleMouseEnter);
+    el.addEventListener('mouseleave', handleMouseLeave);
+
+    return () => {
+      el.removeEventListener('mouseenter', handleMouseEnter);
+      el.removeEventListener('mouseleave', handleMouseLeave);
+    };
   }, { scope: containerRef });
 
   const handleFlip = () => {
@@ -38,29 +52,29 @@ export function IDCard() {
     <div ref={containerRef} className="relative flex flex-col items-center group w-64 md:w-80 h-[500px]" style={{ perspective: '1200px' }}>
       
       {/* Lanyard/Thread */}
-      <div ref={lanyardRef} className="absolute top-[-100px] left-1/2 -translate-x-1/2 w-5 h-[120px] bg-zinc-900 border-l border-r border-zinc-800 z-0 flex flex-col items-center shadow-xl">
+      <div ref={lanyardRef} className="absolute top-[-100px] left-1/2 -translate-x-1/2 w-5 h-[120px] bg-slate-200 border-l border-r border-slate-300 z-0 flex flex-col items-center shadow-xl">
          {/* Lanyard text pattern */}
-         <div className="text-[10px] text-zinc-600 font-mono -rotate-90 whitespace-nowrap mt-12 tracking-widest font-bold">
+         <div className="text-[10px] text-blue-500 font-mono -rotate-90 whitespace-nowrap mt-12 tracking-widest font-bold">
            MHM · MHM
          </div>
       </div>
       
       {/* Lanyard Clip */}
-      <div className="absolute top-2 left-1/2 -translate-x-1/2 w-16 h-5 bg-zinc-400 rounded-t-full shadow-inner z-20 flex justify-center">
-        <div className="w-6 h-2 bg-zinc-600 mt-[2px] rounded-sm" />
+      <div className="absolute top-2 left-1/2 -translate-x-1/2 w-16 h-5 bg-slate-300 rounded-t-full shadow-inner z-20 flex justify-center">
+        <div className="w-6 h-2 bg-slate-400 mt-[2px] rounded-sm" />
       </div>
 
       {/* Card 3D Wrapper */}
       <div 
         ref={cardRef} 
-        className="w-full h-[400px] md:h-[450px] relative top-6 z-10 cursor-pointer shadow-2xl rounded-xl transition-shadow duration-500 hover:shadow-[0_0_40px_rgba(59,130,246,0.3)]" 
+        className="w-full h-[400px] md:h-[450px] relative top-6 z-10 shadow-2xl rounded-xl transition-shadow duration-500 hover:shadow-[0_0_40px_rgba(59,130,246,0.3)] cursor-pointer" 
         style={{ transformStyle: 'preserve-3d' }}
         onClick={handleFlip}
       >
         {/* FRONT FACE */}
         <div 
           className="absolute inset-0 w-full h-full bg-gradient-to-b from-blue-900/40 to-surface border border-border rounded-xl overflow-hidden flex flex-col"
-          style={{ backfaceVisibility: 'hidden' }}
+          style={{ backfaceVisibility: 'hidden', transform: 'translateZ(1px)' }}
         >
           {/* Top Pills */}
           <div className="absolute top-4 left-4 z-20">
@@ -126,7 +140,7 @@ export function IDCard() {
         {/* BACK FACE */}
         <div 
           className="absolute inset-0 w-full h-full bg-surface border border-border rounded-xl p-6 md:p-8 flex flex-col justify-between"
-          style={{ backfaceVisibility: 'hidden', transform: 'rotateY(180deg)' }}
+          style={{ backfaceVisibility: 'hidden', transform: 'rotateY(180deg) translateZ(1px)' }}
         >
           {/* Top row */}
           <div className="flex justify-between items-start">
@@ -141,21 +155,21 @@ export function IDCard() {
           </div>
 
           {/* Middle Content */}
-          <div className="flex flex-col gap-1 mt-6">
+          <div className="flex flex-col gap-1 mt-6 relative z-50 cursor-default" onClick={(e) => e.stopPropagation()}>
             <p className="text-[10px] text-muted font-mono tracking-widest uppercase">Currently</p>
             <h3 className="text-xl md:text-2xl font-bold text-text">CSE student @ SMUCT</h3>
             
             <div className="w-full h-[1px] bg-border my-4" />
             
             <p className="text-[10px] text-muted font-mono tracking-widest uppercase mb-2">Find me</p>
-            <a href="https://github.com/Mostofa-Hasin-Mahdi" target="_blank" rel="noreferrer" className="text-[11px] md:text-xs font-mono text-accent hover:underline block mb-2 break-words">github.com/Mostofa-Hasin-Mahdi</a>
-            <a href="https://linkedin.com/in/mhmrmahdi/" target="_blank" rel="noreferrer" className="text-[11px] md:text-xs font-mono text-accent hover:underline block mb-2 break-words">linkedin.com/in/mhmrmahdi/</a>
-            <a href="mailto:mahdi@mhmdev.vercel.app" className="text-[11px] md:text-xs font-mono text-accent hover:underline block break-words">mahdi@mhmdev.vercel.app</a>
+            <a href="https://github.com/Mostofa-Hasin-Mahdi" target="_blank" rel="noreferrer" className="text-[11px] md:text-xs font-mono text-accent hover:underline block mb-2 break-words relative z-50 py-1">github.com/Mostofa-Hasin-Mahdi</a>
+            <a href="https://linkedin.com/in/mhmrmahdi/" target="_blank" rel="noreferrer" className="text-[11px] md:text-xs font-mono text-accent hover:underline block mb-2 break-words relative z-50 py-1">linkedin.com/in/mhmrmahdi/</a>
+            <a href="mailto:hasinmahdi.hmr@gmail.com" className="text-[11px] md:text-xs font-mono text-accent hover:underline block break-words relative z-50 py-1">hasinmahdi.hmr@gmail.com</a>
           </div>
 
           {/* Footer */}
           <div className="mt-auto pt-6 flex justify-between items-end">
-            <p className="text-[10px] md:text-xs text-muted font-mono uppercase tracking-widest animate-pulse cursor-pointer hover:text-text transition-colors">
+            <p className="text-[10px] md:text-xs text-muted font-mono uppercase tracking-widest animate-pulse hover:text-text transition-colors">
               &larr; tap to flip back
             </p>
             {/* Fake magnetic stripe or barcode */}

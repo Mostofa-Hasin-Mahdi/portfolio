@@ -12,6 +12,7 @@ export function TopographicMap() {
           rotate: { duration: 250, repeat: Infinity, ease: "linear" },
           scale: { duration: 30, repeat: Infinity, ease: "easeInOut" }
         }}
+        style={{ willChange: 'transform' }}
       >
         <g strokeWidth="1.5">
           {/* Main Topographical Node */}
@@ -32,7 +33,7 @@ export function TopographicMap() {
               C ${500 - r + offset4}, ${500 + r} ${500 - r}, ${500 + r * 0.5 + offset3} ${500 - r}, 500
               C ${500 - r}, ${500 - r * 0.3 - offset2} ${500 - r * 0.5 - offset4}, ${500 - r} 500, ${500 - r}
             `;
-            return <path key={i} d={d} className="opacity-80 transition-all duration-1000" />;
+            return <path key={i} d={d} className="opacity-80" />;
           })}
         </g>
 
@@ -50,7 +51,7 @@ export function TopographicMap() {
               C ${-r + o2}, ${r} ${-r}, ${r*0.5 + o1} ${-r}, 0
               C ${-r}, ${-r*0.5 - o2} ${-r*0.5 - o1}, ${-r} 0, ${-r}
             `;
-            return <path key={`node2-${i}`} d={d} className="opacity-60 transition-all duration-1000" />;
+            return <path key={`node2-${i}`} d={d} className="opacity-60" />;
           })}
         </g>
       </motion.svg>

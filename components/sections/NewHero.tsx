@@ -70,7 +70,7 @@ export function NewHero() {
           </motion.div>
           
           <motion.h1 variants={itemVariants} className="text-5xl md:text-7xl font-extrabold tracking-tight mb-6 leading-[1.1]">
-            MOSTOFA<br />HASIN<br /><span className="text-transparent font-black tracking-normal text-6xl md:text-8xl ml-2" style={{ WebkitTextStroke: "2px var(--color-accent)" }}>MAHDI</span>
+            MOSTOFA<br />HASIN<br /><span className="text-transparent font-black tracking-normal text-6xl md:text-8xl" style={{ WebkitTextStroke: "2px var(--color-accent)" }}>MAHDI</span>
           </motion.h1>
           
           <motion.p variants={itemVariants} className="text-muted text-lg md:text-xl max-w-md mb-8">
@@ -78,9 +78,9 @@ export function NewHero() {
           </motion.p>
           
           <motion.div variants={itemVariants} className="flex flex-wrap gap-4 font-mono text-xs">
-            <Link href="#work" className="px-6 py-3 bg-text text-bg hover:opacity-80 transition-opacity rounded-sm">
+            <a href="#work" className="px-6 py-3 bg-text text-bg hover:opacity-80 transition-opacity rounded-sm">
               [ VIEW MY WORK ]
-            </Link>
+            </a>
             <Link href="#contact" className="px-6 py-3 border border-border hover:bg-surface transition-colors rounded-sm text-text">
               [ GET IN TOUCH ]
             </Link>
