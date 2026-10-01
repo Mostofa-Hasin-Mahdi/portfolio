@@ -1,7 +1,8 @@
 'use client';
 
-import { useRef } from 'react';
+import { useRef, useState, useEffect } from 'react';
 import { motion, useScroll, useTransform, useSpring } from 'framer-motion';
+import { useIsMobile } from '@/hooks/useIsMobile';
 import { achievementsData } from '@/lib/achievements';
 
 const POSITIONS = [
@@ -130,7 +131,7 @@ function ScatteredCard({ item, index, total, progress }: any) {
   );
 }
 
-export function AchievementsSection() {
+export function DesktopAchievementsSection() {
   const containerRef = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({
     target: containerRef,
@@ -170,4 +171,52 @@ export function AchievementsSection() {
       </div>
     </section>
   );
+}
+
+export function MobileAchievementsSection() {
+  return (
+    <section id="achievements-mobile" className="py-24 px-6 md:hidden bg-bg border-t border-border">
+      <div className="font-mono text-sm text-accent mb-2">(05) MILESTONES</div>
+      <h2 className="text-3xl font-bold tracking-tight mb-16 text-text">Honors & Achievements</h2>
+
+      <div className="space-y-8 relative">
+        {achievementsData.map((item, index) => (
+          <div key={item.id} className="relative p-6 bg-surface border border-border rounded-2xl shadow-sm">
+            <div className="font-mono text-xs uppercase tracking-widest text-muted mb-2">
+              {item.year}
+            </div>
+            
+            <h3 className="text-xl font-bold text-text mb-2">
+              {item.title.replace(' • ', ' - ')}
+            </h3>
+            
+            {item.description && (
+              <p className="text-muted text-sm leading-relaxed mb-4">
+                {item.description}
+              </p>
+            )}
+            
+            {item.mediaUrl && item.mediaType === 'image' && (
+              <img src={item.mediaUrl} alt={item.title} className="w-full h-auto rounded-lg mt-4 opacity-80" />
+            )}
+            
+            {item.mediaUrl && item.mediaType === 'video' && (
+              <video src={item.mediaUrl} autoPlay loop muted playsInline className="w-full h-auto rounded-lg mt-4 opacity-80" />
+            )}
+          </div>
+        ))}
+      </div>
+    </section>
+  );
+}
+
+export function AchievementsSection() {
+  const isMobile = useIsMobile();
+  const [mounted, setMounted] = useState(false);
+  
+  useEffect(() => setMounted(true), []);
+  
+  if (!mounted) return <section id="achievements" className="h-[100vh] bg-bg border-t border-border" />;
+  
+  return isMobile ? <MobileAchievementsSection /> : <DesktopAchievementsSection />;
 }

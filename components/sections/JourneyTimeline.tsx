@@ -1,7 +1,8 @@
 'use client';
 
-import React, { useRef } from 'react';
+import React, { useRef, useState, useEffect } from 'react';
 import { motion, useScroll, useTransform, MotionValue } from 'framer-motion';
+import { useIsMobile } from '@/hooks/useIsMobile';
 
 const journeyMilestones = [
   { year: "2022", title: "Started CSE", desc: "Began BSc in Computer Science. Discovered a passion for algorithms and systems." },
@@ -57,7 +58,7 @@ function TimelineNode({ item, index, progress, total }: { item: typeof journeyMi
   );
 }
 
-export function JourneyTimeline() {
+export function DesktopJourneyTimeline() {
   const containerRef = useRef<HTMLDivElement>(null);
   
   const { scrollYProgress } = useScroll({
@@ -114,9 +115,9 @@ export function JourneyTimeline() {
   );
 }
 
-export function JourneyTimelineMobile() {
+export function MobileJourneyTimeline() {
   return (
-    <section id="journey-mobile" className="py-24 px-6 md:hidden bg-bg border-t border-border">
+    <section id="journey" className="py-24 px-6 md:hidden bg-bg border-t border-border">
       <div className="font-mono text-sm text-accent mb-2">(02) JOURNEY</div>
       <h2 className="text-3xl font-bold tracking-tight mb-16 text-text">How I Got Here</h2>
 
@@ -137,4 +138,15 @@ export function JourneyTimelineMobile() {
       </div>
     </section>
   );
+}
+
+export function JourneyTimeline() {
+  const isMobile = useIsMobile();
+  const [mounted, setMounted] = useState(false);
+  
+  useEffect(() => setMounted(true), []);
+  
+  if (!mounted) return <section id="journey" className="h-[100vh] bg-bg border-t border-border" />; // Placeholder
+  
+  return isMobile ? <MobileJourneyTimeline /> : <DesktopJourneyTimeline />;
 }

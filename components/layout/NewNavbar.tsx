@@ -10,6 +10,7 @@ export function NewNavbar() {
   const { scrollY } = useScroll();
   const [isScrolled, setIsScrolled] = useState(false);
   const [mounted, setMounted] = useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const { theme, setTheme } = useTheme();
 
   useEffect(() => setMounted(true), []);
@@ -68,11 +69,31 @@ export function NewNavbar() {
               <Moon className="h-4 w-4 block dark:hidden" />
             </button>
           )}
-          <button className="text-xs text-muted hover:text-text transition-colors">
-            MENU
+          <button 
+            className="text-xs text-muted hover:text-text transition-colors z-50"
+            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+          >
+            {isMobileMenuOpen ? "CLOSE" : "MENU"}
           </button>
         </div>
       </div>
+
+      {/* Mobile Menu Overlay */}
+      {isMobileMenuOpen && (
+        <motion.div 
+          initial={{ opacity: 0, y: -20 }}
+          animate={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0, y: -20 }}
+          className="md:hidden absolute top-full left-0 right-0 bg-bg/95 backdrop-blur-xl border-b border-border shadow-2xl overflow-hidden"
+        >
+          <nav className="flex flex-col items-center py-8 gap-6 text-sm font-mono tracking-widest text-muted">
+            <Link href="#work" onClick={() => setIsMobileMenuOpen(false)} className="hover:text-text transition-colors">WORK</Link>
+            <Link href="#about" onClick={() => setIsMobileMenuOpen(false)} className="hover:text-text transition-colors">ABOUT</Link>
+            <Link href="#journey" onClick={() => setIsMobileMenuOpen(false)} className="hover:text-text transition-colors">JOURNEY</Link>
+            <Link href="#contact" onClick={() => setIsMobileMenuOpen(false)} className="hover:text-text transition-colors">CONTACT</Link>
+          </nav>
+        </motion.div>
+      )}
     </motion.header>
   );
 }

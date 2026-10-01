@@ -1,6 +1,7 @@
 'use client';
 import { useRef, useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
+import { useIsMobile } from '@/hooks/useIsMobile';
 
 const skills = [
   // Backend & Databases
@@ -16,6 +17,7 @@ const skills = [
 export function InteractiveSkills() {
   const containerRef = useRef<HTMLDivElement>(null);
   const [mounted, setMounted] = useState(false);
+  const isMobile = useIsMobile();
 
   useEffect(() => {
     setMounted(true);
@@ -41,16 +43,20 @@ export function InteractiveSkills() {
             className="relative w-full min-h-[400px] border border-border bg-surface rounded-3xl overflow-hidden flex flex-wrap content-center justify-center p-8 gap-4"
           >
             {/* Sonar Radar Background */}
-            <motion.div 
-              className="absolute top-1/2 left-1/2 w-48 h-48 bg-accent/20 rounded-full border border-accent/50 z-0 pointer-events-none -translate-x-1/2 -translate-y-1/2 shadow-[0_0_50px_rgba(59,130,246,0.3)]"
-              animate={{ scale: [1, 4], opacity: [0.8, 0] }}
-              transition={{ duration: 3, repeat: Infinity, ease: "easeOut" }}
-            />
-            <motion.div 
-              className="absolute top-1/2 left-1/2 w-48 h-48 bg-accent/20 rounded-full border border-accent/50 z-0 pointer-events-none -translate-x-1/2 -translate-y-1/2 shadow-[0_0_50px_rgba(59,130,246,0.3)]"
-              animate={{ scale: [1, 4], opacity: [0.8, 0] }}
-              transition={{ duration: 3, delay: 1.5, repeat: Infinity, ease: "easeOut" }}
-            />
+            {!isMobile && (
+              <>
+                <motion.div 
+                  className="absolute top-1/2 left-1/2 w-48 h-48 bg-accent/20 rounded-full border border-accent/50 z-0 pointer-events-none -translate-x-1/2 -translate-y-1/2 shadow-[0_0_50px_rgba(59,130,246,0.3)]"
+                  animate={{ scale: [1, 4], opacity: [0.8, 0] }}
+                  transition={{ duration: 3, repeat: Infinity, ease: "easeOut" }}
+                />
+                <motion.div 
+                  className="absolute top-1/2 left-1/2 w-48 h-48 bg-accent/20 rounded-full border border-accent/50 z-0 pointer-events-none -translate-x-1/2 -translate-y-1/2 shadow-[0_0_50px_rgba(59,130,246,0.3)]"
+                  animate={{ scale: [1, 4], opacity: [0.8, 0] }}
+                  transition={{ duration: 3, delay: 1.5, repeat: Infinity, ease: "easeOut" }}
+                />
+              </>
+            )}
 
             {skills.map((skill, i) => (
               <motion.div

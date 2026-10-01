@@ -4,7 +4,7 @@ import { InteractiveSkills } from "@/components/sections/InteractiveSkills";
 import { EngineeringPrinciples } from "@/components/sections/EngineeringPrinciples";
 import { AchievementsSection } from "@/components/sections/AchievementsSection";
 import { AboutSection } from "@/components/sections/AboutSection";
-import { JourneyTimeline, JourneyTimelineMobile } from "@/components/sections/JourneyTimeline";
+import { JourneyTimeline } from "@/components/sections/JourneyTimeline";
 import { ContactSection } from "@/components/sections/ContactSection";
 
 export default function Home() {
@@ -13,7 +13,6 @@ export default function Home() {
       <NewHero />
       <AboutSection />
       <JourneyTimeline />
-      <JourneyTimelineMobile />
       <WorkSection />
       <InteractiveSkills />
       <EngineeringPrinciples />
