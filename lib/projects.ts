@@ -99,7 +99,7 @@ export const projects: Project[] = [
   {
     id: "porapao",
     title: "Pora Pao",
-    tagline: "Multi-tenant platofrm for connecting private tutors with their students.",
+    tagline: "Multi-tenant platform for connecting private tutors with their students.",
     description: [
       "A modern, mobile-first, completely serverless web application that connects private tutors with their students through an intuitive platform.",
       "Built with React, Vite, and Supabase"
