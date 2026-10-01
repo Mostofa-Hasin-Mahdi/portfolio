@@ -19,7 +19,7 @@ export const certificatesData = [
   },
   {
     id: 4,
-    title: "Finalist among 3000+ teams",
+    title: "Finalist among 3000+ participants",
     issuer: "CloudcampBD Inifity AI BuildFest",
     image: "/assets/certificates/finalist participation.jpg"
   }

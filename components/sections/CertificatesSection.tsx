@@ -1,38 +1,86 @@
 'use client';
 
-import React, { useRef } from 'react';
-import gsap from 'gsap';
-import { useGSAP } from '@gsap/react';
+import React, { useRef, useState, useEffect } from 'react';
 import { certificatesData } from '@/lib/certificates';
 import { SpotlightCard } from '@/components/ui/SpotlightCard';
 
-// Register the GSAP plugin for React
-gsap.registerPlugin(useGSAP);
-
 export function CertificatesSection() {
-  const containerRef = useRef<HTMLDivElement>(null);
-  const trackRef = useRef<HTMLDivElement>(null);
-  const tweenRef = useRef<gsap.core.Tween | null>(null);
+  const scrollRef = useRef<HTMLDivElement>(null);
+  const [isDragging, setIsDragging] = useState(false);
+  const [startX, setStartX] = useState(0);
+  const [scrollLeft, setScrollLeft] = useState(0);
+  const velocityRef = useRef(1); // Auto-scroll speed
+  const isHoveredRef = useRef(false);
 
-  useGSAP(() => {
-    if (!trackRef.current) return;
+  // Infinite Auto-Scroll Loop
+  useEffect(() => {
+    let animationFrameId: number;
+    const container = scrollRef.current;
     
-    // We animate the track to -50% because it contains two identical sets (each 50% of total width)
-    tweenRef.current = gsap.to(trackRef.current, {
-      xPercent: -50,
-      ease: "none",
-      duration: 35, // Adjust this value to make the carousel slower or faster
-      repeat: -1,
-    });
-  }, { scope: containerRef });
+    const play = () => {
+      if (container && !isDragging && !isHoveredRef.current) {
+        container.scrollLeft += velocityRef.current;
+        
+        // Seamless wrap around when reaching the middle (since items are duplicated)
+        if (container.scrollLeft >= container.scrollWidth / 2) {
+          container.scrollLeft = 1; // Snap back to start seamlessly
+        } else if (container.scrollLeft <= 0 && velocityRef.current < 0) {
+          container.scrollLeft = container.scrollWidth / 2;
+        }
+      }
+      animationFrameId = requestAnimationFrame(play);
+    };
+    
+    play();
+    return () => cancelAnimationFrame(animationFrameId);
+  }, [isDragging]);
+
+  const handleDragStart = (e: React.MouseEvent | React.TouchEvent) => {
+    setIsDragging(true);
+    if (!scrollRef.current) return;
+    const pageX = 'touches' in e ? e.touches[0].pageX : (e as React.MouseEvent).pageX;
+    setStartX(pageX - scrollRef.current.offsetLeft);
+    setScrollLeft(scrollRef.current.scrollLeft);
+  };
+
+  const handleDragMove = (e: React.MouseEvent | React.TouchEvent) => {
+    if (!isDragging || !scrollRef.current) return;
+    e.preventDefault();
+    const container = scrollRef.current;
+    const pageX = 'touches' in e ? e.touches[0].pageX : (e as React.MouseEvent).pageX;
+    const x = pageX - container.offsetLeft;
+    const walk = (x - startX) * 2.5; // Scroll-fast multiplier
+    
+    let newScrollLeft = scrollLeft - walk;
+    
+    // Wrap around logic while dragging manually
+    if (newScrollLeft >= container.scrollWidth / 2) {
+      newScrollLeft -= container.scrollWidth / 2;
+      setStartX(pageX - container.offsetLeft);
+      setScrollLeft(newScrollLeft);
+    } else if (newScrollLeft <= 0) {
+      newScrollLeft += container.scrollWidth / 2;
+      setStartX(pageX - container.offsetLeft);
+      setScrollLeft(newScrollLeft);
+    }
+    
+    container.scrollLeft = newScrollLeft;
+  };
+
+  const handleDragEnd = () => {
+    setIsDragging(false);
+  };
 
   const handleMouseEnter = () => {
-    tweenRef.current?.pause();
+    isHoveredRef.current = true;
   };
 
   const handleMouseLeave = () => {
-    tweenRef.current?.play();
+    isHoveredRef.current = false;
+    setIsDragging(false); // also cancel drag if mouse leaves container
   };
+
+
 
   const renderCard = (cert: typeof certificatesData[0], keyIndex: number) => (
     <div key={`${cert.id}-${keyIndex}`} className="flex-shrink-0 w-[300px] md:w-[500px]">
@@ -45,9 +93,14 @@ export function CertificatesSection() {
             className="w-full h-full object-cover object-center group-hover:scale-[1.03] transition-transform duration-700" 
           />
           {/* Subtle overlay so text is readable */}
-          <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent flex flex-col justify-end p-6 md:p-8 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+          <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent flex flex-col justify-end p-6 md:p-8 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
             <h3 className="text-white text-xl md:text-2xl font-bold drop-shadow-lg">{cert.title}</h3>
             <p className="text-accent text-sm md:text-base font-mono mt-2 drop-shadow-md">{cert.issuer}</p>
+            {cert.description && (
+              <p className="text-white/80 text-sm mt-3 line-clamp-3 leading-relaxed border-t border-white/20 pt-3">
+                {cert.description}
+              </p>
+            )}
           </div>
         </div>
       </SpotlightCard>
@@ -64,18 +117,22 @@ export function CertificatesSection() {
         </p>
       </div>
 
-      <div ref={containerRef} className="w-full overflow-hidden flex cursor-grab active:cursor-grabbing">
-        <div 
-          ref={trackRef} 
-          className="flex w-max gap-6 md:gap-8 px-3 md:px-4"
-          onMouseEnter={handleMouseEnter}
-          onMouseLeave={handleMouseLeave}
-          onTouchStart={handleMouseEnter}
-          onTouchEnd={handleMouseLeave}
-        >
-          {/* We map the array twice to create a seamless infinite loop */}
-          {certificatesData.map((cert) => renderCard(cert, 1))}
-          {certificatesData.map((cert) => renderCard(cert, 2))}
+      <div 
+        ref={scrollRef}
+        className={`w-full overflow-x-hidden flex pb-8 scrollbar-hide ${isDragging ? 'cursor-grabbing' : 'cursor-grab'}`}
+        onMouseDown={handleDragStart}
+        onMouseMove={handleDragMove}
+        onMouseUp={handleDragEnd}
+        onMouseLeave={handleMouseLeave}
+        onMouseEnter={handleMouseEnter}
+        onTouchStart={(e) => { handleMouseEnter(); handleDragStart(e); }}
+        onTouchMove={handleDragMove}
+        onTouchEnd={(e) => { handleMouseLeave(); handleDragEnd(); }}
+      >
+        <div className="flex w-max gap-6 md:gap-8 px-6 md:px-12">
+          {certificatesData.map((cert, index) => renderCard(cert, index))}
+          {/* Duplicate set for infinite loop illusion */}
+          {certificatesData.map((cert, index) => renderCard(cert, index + certificatesData.length))}
         </div>
       </div>
     </section>
