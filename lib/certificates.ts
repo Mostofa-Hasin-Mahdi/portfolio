@@ -1,4 +1,12 @@
-export const certificatesData = [
+export interface Certificate {
+  id: number;
+  title: string;
+  issuer: string;
+  image: string;
+  description?: string;
+}
+
+export const certificatesData: Certificate[] = [
   {
     id: 1,
     title: "1st Place Winner",
